@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <title>Rashed Store / Shopping Cart </title>
+</head>
+<body>
+    <header>
+        <div class="part-left">
+            <nav class="menu-icon">
+                <span class="material-symbols-outlined" >menu</span>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#target-jewelry">Jewelry</a></li>
+                    <li><a href="index.html#target-food">Food</a></li>
+                    <li><a href="index.html#target-colthes">Colthes</a></li>
+                    <li><a href="index.html#target-electronics">Electronics</a></li>
+                </ul>
+            </nav>
+            <div class="log"><img src="images/store-log.png" alt=""></div>
+            
+        </div>
+        <div class="part-right">
+            <ul>
+                <li id="home" ><span class="material-symbols-outlined" >home</span></li>
+                <li id="favorite"><span class="material-symbols-outlined" >favorite</span> <span class="circle" id="circle-live"></span></li>
+                <li id="shopping-cart" style="background-color: green; color: white;"><span class="material-symbols-outlined" >shopping_cart</span><span class="circle" id="circle-shopping"></span></li>
+
+              
+                
+                
+            </ul>
+        </div>
+
+    </header>
+    <div class="shopping-cart">
+        <div class="container"></div>
+        
+    </div>
+
+    <div class="payment-pag">
+        <div class="payment">
+            <img src="images/store-log.png" alt="">
+            
+            <div class="massage">
+                <h2>Thank you for your recent purchase!</h2>
+            
+                <div class="section">
+                    <h3>Delivery Details</h3>
+                    <p><strong>Estimated Delivery Time:</strong> Within 14 days</p>
+                    <p><strong>Delivery Address:</strong> [Your provided address]</p>
+                    <p><strong>Shipping Method:</strong> Standard Shipping</p>
+                </div>
+            
+                <div class="section">
+                    <h3>Payment Information</h3>
+                    <p><strong>Payment Method:</strong> Cash on Delivery (COD)</p>
+                </div>
+                </div>
+            
+            <button class="close"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#EA3323"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg></button>
+            <div class="footer">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-telegram"></a>
+                <a href="#" class="fa fa-whatsapp"></a>
+                <a href="#" class="fa fa-vk"></a>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+    
+
+   
+    <script>
+
+        const goToHomeIcon = document.querySelector("#home");
+        goToHomeIcon.addEventListener("click", () =>{
+            window.location.href = "index.html";
+
+        });
+        function goToFavorite(){
+            const getFavoriteIcon = document.querySelector("#favorite");
+            getFavoriteIcon.addEventListener("click", () =>{
+                window.location.href = "favoriteProduct.html";
+
+            });
+
+        }
+
+goToFavorite()
+        function setProductInShoppingCart(){
+            
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);  
+                if (key.startsWith("product")) {
+                    const product = JSON.parse(localStorage.getItem(key));
+                    const shoppingProductDiv = document.querySelector('.container');
+                 
+              
+                    shoppingProductDiv.innerHTML += `
+                        <div class="product" id=${product.id}>
+                            <img src=${product.img} alt="">
+                            <span class="material-symbols-outlined" id="live-product">favorite</span>
+                            <div class="info">
+                            <p class="price"><span class="price-now" >${product.priceNow }</span> <span class="price-befor">${product.priceBefor}</span></p>
+                            <p class="discraption">${product.discraption}</p>
+                            <button class="Delete">Delete</button>
+                            <div class="conunt">
+                            <button id="decrementButton" class="like-button" disabled>–</button>
+                            <span id="likeCount" class="like-count">1</span>
+                            <button id="incrementButton" class="like-button">+</button>
+                            </div>
+                            <p class="totle-price"> Buy Now For ${product.priceNow }</p>
+                        
+                            
+                            
+                            
+                        </div>`
+
+                }
+            }
+
+         
+            
+
+           
+
+        };
+        setProductInShoppingCart();
+
+
+        function incrementAndDecrement(){
+            
+            const products = document.querySelectorAll(".product");
+            const priceNow = document.querySelector(".price-now")
+            
+    
+
+            products.forEach(count => {
+                const incrementBtn = count.querySelector("#incrementButton");
+                const decrementBtn = count.querySelector("#decrementButton");
+                const likeCount = count.querySelector("#likeCount");
+                const totlePrice = count.querySelector(".totle-price");
+                const priceNow = count.querySelector(".price-now");
+                const deleteBtn = count.querySelector(".Delete") ;
+                const payment = document.querySelector(".payment-pag") ;
+                const closeBtn = document.querySelector(".close") ;
+
+                closeBtn.addEventListener("click" , ()=> {
+                    payment.style.display = "none";
+                    
+
+                })
+
+    
+
+                const priceNowNumber = Number(priceNow.innerHTML.replace(/[^0-9.]/g, ''));
+                
+
+                
+
+                incrementBtn.onclick = () => {
+                    likeCount.innerHTML++
+                    decrementBtn.disabled = false;
+                    totlePrice.innerHTML = `Buy Now For ${priceNowNumber * Number(likeCount.innerHTML)}$`;
+                   
+                    
+                };
+
+                decrementBtn.onclick = () => {
+
+                    if (likeCount.innerHTML > 1){
+                        likeCount.innerHTML--
+                        decrementBtn.disabled = false;
+                        totlePrice.innerHTML = `Buy Now For ${priceNowNumber * Number(likeCount.innerHTML)}$`;
+                   
+                        
+                        
+
+                    }else{
+                        decrementBtn.disabled = true;
+                    }
+                    
+                };
+
+                deleteBtn.addEventListener("click" , ()=> {
+                    localStorage.removeItem(`${count.id}`)
+                    window.location.reload()
+
+                })
+
+                totlePrice.addEventListener("click" , ()=> {
+                    payment.style.display = "block";
+                    
+
+                })
+                
+            });
+
+            
+            
+
+            
+        }
+
+        incrementAndDecrement();
+      
+        function addToFavorite(){
+            const favoritBtn = document.querySelectorAll("#live-product")
+            favoritBtn.forEach(favorit => {
+                favorit.addEventListener("click", () => {
+                    favorit.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+                    
+                    const productDiv = favorit.closest('.product');   
+                    const productImg = document.querySelector(`#${productDiv.id} img`);
+                    const productlive = document.querySelector(`#${productDiv.id} #live-product`);
+                    const priceNow = document.querySelector(`#${productDiv.id} .price-now`);
+                    const priceBefor = document.querySelector(`#${productDiv.id} .price-befor`);
+                    const discraption = document.querySelector(`#${productDiv.id} .discraption`);
+                
+                    const product ={
+                        id : productDiv.id,
+                        img : productImg.src,
+                        live : productlive.textContent,
+                        priceNow: priceNow.innerHTML,
+                        priceBefor:priceBefor.innerHTML,
+                        discraption : discraption.innerHTML,
+                    }
+                    localStorage.setItem(`live ${productDiv.id}`, JSON.stringify(product));  
+                    window.location.reload();
+                    
+                    
+                });
+            });
+        }
+
+        addToFavorite()
+        function updateFavoriteIcons() {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const productData = JSON.parse(localStorage.getItem(`live ${product.id}`));
+                if (productData) {
+                    const favorit = product.querySelector("#live-product");
+                    favorit.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#EA3323"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+                    
+                }
+            });
+        }
+
+        updateFavoriteIcons();
+
+        function removeLive(){
+            const products = document.querySelectorAll(".product");
+            products.forEach(icon => {
+                const getitem = localStorage.getItem(`live ${icon.id}`);
+                if(getitem !== null){
+                    const favoriteIcon = icon.querySelector("#live-product");
+                        favoriteIcon.addEventListener("click" , ()=> {
+                                localStorage.removeItem(`live ${icon.id}`)
+                                window.location.reload()   
+
+                            })
+
+                }
+                
+
+                
+
+            })
+
+        }
+    removeLive();
+
+    function calcNumberProduct (){
+    let numInShopping = 0;
+    for(let i = 0; i < localStorage.length; i++){
+        const key = localStorage.key(i);
+        if(key.startsWith("product")){
+            numInShopping++
+            
+        }
+
+    }
+
+
+    const numberIShoppingCart = document.querySelector("#circle-shopping");
+    numberIShoppingCart.style.color = "green";
+
+    if (numInShopping === 0){
+        numberIShoppingCart.style.opacity = 0;
+
+    } else {
+        if (numInShopping <= 5){
+            numberIShoppingCart.innerHTML = `${numInShopping}`;
+
+        } else{
+            numberIShoppingCart.innerHTML = `+5`;
+
+        }
+    }
+
+    // # get number product lives
+    let numInLive = 0;
+    for(let i = 0; i < localStorage.length; i++){
+        const key = localStorage.key(i);
+        if(key.startsWith("live")){
+            numInLive++
+            
+        }
+
+    }
+
+
+    const numberInLive = document.querySelector("#circle-live");
+    numberInLive.style.color = "red";
+
+    if (numInLive === 0){
+        numberInLive.style.opacity = 0;
+
+    } else {
+        if (numInLive <= 5){
+            numberInLive.innerHTML = `${numInLive}`;
+
+        } else{
+            numberInLive.innerHTML = `+5`;
+
+        }
+    }
+}
+
+    calcNumberProduct();
+
+    
+      
+                
+
+
+            
+           
+    </script>
+</body>
+</html>
+
+

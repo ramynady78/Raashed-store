@@ -1,0 +1,494 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 10px;
+}
+
+header{
+    width: 100%;
+    height: 75px;
+    padding: 20px;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 45;
+    margin-left: -10px;
+}
+
+header .part-left{
+    display: inline-flex;
+    align-items: center;
+}
+header .menu-icon{
+    margin: 0 10px ;
+    position: relative;
+    margin-left: -10px;
+    cursor: pointer;
+     
+}
+
+header .dropdown-menu{
+    display: none;
+    background-color: #f6781266;
+    position: absolute;
+    z-index: 2;
+    width: 180px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    
+
+}
+header .dropdown-menu li{
+    list-style: none;
+    margin: 5px 0;
+    margin-left: -35px;
+    margin-right: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+header .dropdown-menu li:not(:last-of-type){
+    border-bottom: 1px solid #eee;
+}
+header .dropdown-menu li:hover{
+    color: red;
+}
+header .dropdown-menu li a{
+    color: black;
+    text-decoration: none;
+}
+header .dropdown-menu li a:hover{
+    color: red;
+}
+
+header .menu-icon:hover .dropdown-menu{
+    display: block;
+}
+header .log img{
+    width: 170px;
+    margin: 0 10px;
+    margin-left: -25px;
+}
+header .part-left .dropdown-contact{
+    display: none;
+    background-color: #f6781266;
+    position: absolute;
+    z-index: 2;
+    right: -90px;
+    top: 140px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+}
+header .part-left .dropdown-contact li{
+    list-style: none;
+    margin: 5px 0;
+    margin-left: -35px;
+    margin-right: 5px;
+    padding: 5px;
+}
+header .part-left .dropdown-contact li:not(:last-of-type){
+    border-bottom: 1px solid #eee;
+}
+header .part-left .dropdown-contact li a{
+    color: black;
+    text-decoration: none;
+}
+header .part-left .dropdown-contact li a:hover{
+    color: red;
+}
+
+header .part-left .contact:hover .dropdown-contact{
+    display: block;
+}
+
+header .part-right{
+    font-weight: bold;
+    font-size: 20px;
+}
+header .part-right ul{
+    display: inline-flex;
+    align-items: center;
+    margin-left: -52px;
+}
+
+header .part-right li {
+    list-style: none;
+    margin: 0 5px;
+    position: relative;
+    
+
+}
+header .part-right li .circle {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: rgba(255, 255, 255, 0.732);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
+header .part-right .in-this-page{
+    background-color: green;
+     
+
+}
+
+header .part-right #shopping-cart ,
+header .part-right #favorite ,
+header .part-right #home {
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+    background-color: #b3afafa3;
+    padding: 10px 0;
+    border-radius: 6px;
+  
+}
+
+header .part-right #shopping-cart:hover ,
+header .part-right #favorite:hover,
+header .part-right #home:hover{
+    opacity: 0.5;
+}
+
+
+
+
+
+.container{
+    margin: 10px 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+    gap: 10px;
+    top: 85px;
+    position: relative;
+}
+
+
+
+
+.container .product{
+    box-sizing: border-box;
+    position: relative;
+    margin: 10px 10px 0;
+    height: fit-content;
+}
+
+.container .product img{
+    width: 100%;
+    height: 65%;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    position: relative;
+    border: 3px solid #f6781266;
+    border-bottom: none;
+}
+.container .product #live-product{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.container .product .info{
+    width: 100%;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background-color: #f6781266;
+    margin-top: -5px;
+    padding: 10px;
+    
+
+}
+.container .product .info p{
+    font-size: 14px;
+    margin: 2px 0;
+}
+
+.container .product .info .price .price-now{
+    color: green;
+    font-weight: bolder;
+    font-size: 20px;
+    
+}
+.container .product .info .price .price-befor{
+    color: red; 
+    opacity: .8; 
+    text-decoration: line-through;
+
+}
+.container .product .info .discraption{
+    height: 40px ;
+    font-size: 20px; 
+    display: flex;
+    align-items: center;
+
+}
+.container .product .info .add-to-car-shopping{
+    margin: 10px 5% 0;
+    width: 90%;
+    background-color: #3871c1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.container .product .info .add-to-car-shopping :hover{
+    opacity: .5;
+}
+
+
+
+
+
+
+
+.container .product .info .Delete,
+.container .product .info .conunt{
+    box-sizing: border-box;
+    margin: 5px auto;
+    width: 48%;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    
+
+}
+
+.container .product .info .totle-price{
+    width: 98%;
+    background-color: #3871c1;
+    color: white;
+    margin: 4px 1%;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+
+}
+.container .product .info .totle-price:hover{
+    opacity: .7;
+}
+.container .product .info .Delete{
+     background-color: #db0808;
+     color: #eee;
+     cursor: pointer;
+
+}
+
+.container .product .info .conunt{
+    background-color: #eee;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .product .info .conunt button{
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+
+
+}
+
+.container .product .info .conunt button:hover{
+    color: #db0808;
+
+}
+
+.container .product .info .conunt #decrementButton:disabled{
+    opacity: .5;
+    cursor: no-drop;
+    
+}
+
+.container .product .info .conunt .totle-price{
+    margin-left: 5px;
+    
+}
+
+.payment-pag {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgb(0 0 0 / 86%);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.payment{
+    background-color: #eee;
+    width: 90%;
+    height: 55%;
+    z-index: 78;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    border-radius: 15px;
+} 
+
+.payment img{
+    width: 50%;
+    margin-top: 20px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+.payment .massage{
+    display: block;
+    text-align: center;
+    margin: 20px;
+    font-size: 20px;
+    height: 64%;
+    background-color: #817b7b2e;
+    padding: 10px
+    
+}
+
+.payment .massage h2{
+   font-size: 20px;
+}
+.payment .massage p {
+    font-size: 15px;
+    margin-top: 10px;
+
+}
+.payment .massage h3{
+   font-size: 18px;
+   color: #3871c1;
+   margin-top: 10px;
+}
+
+
+.payment .close{
+    position: absolute;
+    top: -26%;
+    right: -4%;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.payment .footer {
+    height: 50px;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    margin: 10px 5%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.footer .fa{
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    align-content: center;
+    font-size: 20px;
+    text-decoration: none;
+}
+.footer .fa:hover{
+    opacity: .8;
+}
+
+
+.fa-facebook {
+    background: #3B5998;
+
+}
+.fa-instagram {
+    background: #E4405F;  
+}
+
+.fa-telegram {
+    background: #0088cc;
+
+}
+.fa-whatsapp {
+    background: #25D366;
+
+}
+.fa-vk {
+    background: #4C75A3;
+
+}
+
+footer{
+    height: 50px;
+    width: 100%;
+    position: relative;
+    bottom: -80px;
+    left: 0;
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #eee;
+
+
+}
+
+hr{
+    position: relative;
+    bottom: -90px;
+    font-weight: bold;
+    height: 0px;
+    color: red;
+    border: none;
+    border-top: 4px solid red; 
+    border-radius: 2px;
+}
+
+h1 {
+    position: relative;
+    bottom: -100px;
+    text-align: center;
+    padding: 10px;
+    background-color: #f6781266;
+    border-radius: 6px;
+    width: 350px;
+    display: flex;
+    margin: 5px auto 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
