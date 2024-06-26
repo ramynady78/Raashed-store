@@ -48,7 +48,7 @@ To run this project locally, follow these steps:
 
 ## Usage
 Visit the following link to view the live demo of the project:
-[Rashed Store Demo]()
+[Rashed Store Demo](https://rashed-store.vercel.app/)
 
 
 
