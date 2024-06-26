@@ -341,7 +341,7 @@ header .part-right #home:hover{
 .payment{
     background-color: #eee;
     width: 90%;
-    height: 55%;
+    height: 75%;
     z-index: 78;
     position: absolute;
     top: 25%;
@@ -386,7 +386,7 @@ header .part-right #home:hover{
 
 .payment .close{
     position: absolute;
-    top: -26%;
+    top: -18%;
     right: -4%;
     border: none;
     cursor: pointer;
