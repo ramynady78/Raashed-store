@@ -36,12 +36,12 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/ramynady78/Raashed-store.git
+    git clone https://github.com/ramynady78/Rashed-store.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd Raashed-store
+    cd Rashed-store
     ```
 
 3. Open the `index.html` file in your browser to view the project.
